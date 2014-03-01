@@ -33,7 +33,8 @@ def date_range(start, end):
 #########
 
 #xmlfile = raw_input("Enter file name: ")
-xmldata = ET.parse('wfs.xml')
+xmldata = ET.parse('/Users/Hamish/Desktop/wfs.xml')
+#xmldata = ET.parse(f)
 
 root = xmldata.getroot()
 
@@ -43,7 +44,6 @@ analysistime = root[0][0][1][0][0].text
 
 starttime = datetime.datetime.strptime(starttime, "%Y-%m-%dT%H:%M:%SZ")+datetime.timedelta(hours=2)
 endtime = datetime.datetime.strptime(endtime, "%Y-%m-%dT%H:%M:%SZ")+datetime.timedelta(hours=2)
-#timeList = date_range(starttime, endtime)
 
 location = root[0][0][5][0][0][0][0][0][1].text
 geoid = root[0][0][5][0][0][0][0][0][0].text
@@ -183,12 +183,10 @@ ax3.set_ylabel("Precip.\n(mm/hr)")
 ax3.set_ylim(0,4)
 ax3.set_yticks((0,2,4))
 
-
-#plt.tight_layout()
 #plt.show()
 savename = raw_input("Specify Location, Hetta(H) or Valimaa (V):")
 if (savename=='H'):
-    plt.savefig('../Dropbox/Cape Lapland/Hetta_Forecast.pdf')
+    plt.savefig('Hetta_Forecast.pdf')
 else:
     plt.savefig('Valimaa_Forecast.pdf')
 
